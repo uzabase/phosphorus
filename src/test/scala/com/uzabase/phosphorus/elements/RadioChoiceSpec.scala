@@ -1,7 +1,7 @@
 package com.uzabase.phosphorus.elements
 
-import com.uzabase.phosphorus.elements.RadioChoice
 import org.openqa.selenium.WebDriver
+
 import com.uzabase.phosphorus.UnitSpecification
 
 class RadioChoiceSpec extends UnitSpecification{

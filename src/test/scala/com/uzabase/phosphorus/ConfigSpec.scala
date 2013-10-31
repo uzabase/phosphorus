@@ -1,9 +1,5 @@
 package com.uzabase.phosphorus
 
-import org.specs2.mutable.Specification
-
-import com.uzabase.phosphorus.UnitSpecification;
-
 class ConfigSpec extends UnitSpecification {
 
 	"設定情報" should {

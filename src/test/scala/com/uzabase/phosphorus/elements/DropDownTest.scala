@@ -6,8 +6,6 @@ import org.junit.Test
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.ui.Select
 
-import com.uzabase.phosphorus.elements.DropDown;
-
 import mockit.Expectations
 import mockit.Expectations.result
 import mockit.Mocked

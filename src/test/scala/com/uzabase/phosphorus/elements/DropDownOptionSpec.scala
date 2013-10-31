@@ -1,8 +1,7 @@
 package com.uzabase.phosphorus.elements
 
-import org.junit.runner.RunWith
 import org.openqa.selenium.WebElement
-import com.uzabase.phosphorus.elements.DropDownOption;
+
 import com.uzabase.phosphorus.UnitSpecification
 
 class DropDownOptionSpec extends UnitSpecification{

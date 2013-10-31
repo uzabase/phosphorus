@@ -1,7 +1,7 @@
 package com.uzabase.phosphorus
 
 import org.specs2.matcher.Expectable
-import com.uzabase.phosphorus.DropDownMatcher;
+
 import com.uzabase.phosphorus.elements.DropDown
 
 class DropDownMatcherSpec extends UnitSpecification{

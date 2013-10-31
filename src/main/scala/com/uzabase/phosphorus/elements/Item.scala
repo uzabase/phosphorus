@@ -28,12 +28,8 @@ trait Item extends Displayable with Selectable
 }
 
 case class Element(webElement:WebElement) extends Item
-object Element extends HasUntil{
-	def apply(by:Predicate,xpath:String)(implicit driver:WebDriver):Element = new Element(driver.findElement(By.xpath(xpath)))
-	def apply(by:Predicate,xpath:String,wait:WebDriverWait)(implicit driver:WebDriver):Element = {
-		until(wait, By.xpath(xpath))
-		new Element(driver.findElement(By.xpath(xpath)))
-	}
+object Element extends ElementCompanyon[Element]{
+	def apply(xpath:String)(implicit driver:WebDriver):Element = apply(driver.findElement(By.xpath(xpath)))
 }
 
 case class Div(webElement:WebElement) extends Item
