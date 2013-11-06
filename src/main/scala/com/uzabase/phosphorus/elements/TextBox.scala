@@ -16,3 +16,10 @@ object TextBox extends HasUntil with InputXpath{
 	def apply(atr: Predicate)(implicit driver:WebDriver) = new TextBox(driver.findElement(path(atr)))
 	def apply(element:WebElement) = new TextBox(element)
 }
+
+class Password(element: WebElement) extends TextBox(element)
+object Password extends HasUntil with InputXpath{
+	val typeName = "password"
+	def apply(atr: Predicate)(implicit driver:WebDriver) = new Password(driver.findElement(path(atr)))
+	def apply(element:WebElement) = new Password(element)
+}
