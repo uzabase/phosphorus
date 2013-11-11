@@ -42,7 +42,9 @@ object Anchor extends ElementCompanyon[Anchor] {
 }
 
 case class Span(webElement:WebElement) extends Item
-object Span extends ElementCompanyon[Span]
+object Span extends ElementCompanyon[Span] {
+	override def tagName = "span"
+}
 
 case class Ul(webElement:WebElement) extends Item
 object Ul extends ElementCompanyon[Ul]

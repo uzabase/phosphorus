@@ -21,5 +21,8 @@ class AttributeSpec extends UnitSpecification{
 		"selectedのxpath構文" in {
 			selected().fullSyntax must beEqualTo("[@selected='selected']")
 		}
+		"classのxpath構文" in {
+			class_("hoge").fullSyntax must beEqualTo("[@class='hoge']")
+		}
 	}
 }
