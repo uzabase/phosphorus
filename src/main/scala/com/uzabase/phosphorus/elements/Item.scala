@@ -33,7 +33,9 @@ object Element extends ElementCompanyon[Element]{
 }
 
 case class Div(webElement:WebElement) extends Item
-object Div extends ElementCompanyon[Div]
+object Div extends ElementCompanyon[Div]{
+	override def tagName = "div"
+}
 
 case class Anchor(webElement:WebElement) extends Item
 object Anchor extends ElementCompanyon[Anchor] {
@@ -47,10 +49,14 @@ object Span extends ElementCompanyon[Span] {
 }
 
 case class Ul(webElement:WebElement) extends Item
-object Ul extends ElementCompanyon[Ul]
+object Ul extends ElementCompanyon[Ul]{
+	override def tagName = "ul"
+}
 
 case class Li(webElement:WebElement) extends Item
-object Li extends ElementCompanyon[Li]  
+object Li extends ElementCompanyon[Li]  {
+	override def tagName = "li"
+}
 
 trait ElementCompanyon[E <: Item] extends HasUntil with HasTagName {
 	def apply(element:WebElement):E
