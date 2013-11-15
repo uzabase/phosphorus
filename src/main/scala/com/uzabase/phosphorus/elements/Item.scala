@@ -15,6 +15,8 @@ trait Item extends Displayable with Selectable
 	
 	def displayed = webElement.isDisplayed
 	
+	def attribute(atrName:String) = webElement.getAttribute(atrName)
+	
 	override def hashCode = {
 		val prime = 31
 		var result = 1
@@ -35,6 +37,11 @@ object Element extends ElementCompanyon[Element]{
 case class Div(webElement:WebElement) extends Item
 object Div extends ElementCompanyon[Div]{
 	override def tagName = "div"
+}
+
+case class Image(webElement:WebElement) extends Item
+object Image extends ElementCompanyon[Image]{
+	override def tagName = "img"
 }
 
 case class Anchor(webElement:WebElement) extends Item
