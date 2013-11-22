@@ -72,6 +72,10 @@ trait ElementCompanyon[E <: Item] extends HasUntil with HasTagName {
 		until(wait, by.by(tagName))
 		apply(by)
 	}
+	def elements(xpath:String)(implicit driver:WebDriver):Seq[E] = {
+		import scala.collection.JavaConversions.asScalaBuffer
+		driver.findElements(By.xpath(xpath)).map(e => apply(e))
+	}
 }
 
 trait HasUntil {
