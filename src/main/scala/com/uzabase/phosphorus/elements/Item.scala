@@ -32,6 +32,10 @@ trait Item extends Displayable with Selectable
 case class Element(webElement:WebElement) extends Item
 object Element extends ElementCompanyon[Element]{
 	def apply(xpath:String)(implicit driver:WebDriver):Element = apply(driver.findElement(By.xpath(xpath)))
+	def apply(xpath:String,wait:WebDriverWait)(implicit driver:WebDriver):Element = {
+		until(wait, By.xpath(xpath));
+		apply(driver.findElement(By.xpath(xpath)))
+	}
 }
 
 case class Div(webElement:WebElement) extends Item
@@ -74,6 +78,11 @@ trait ElementCompanyon[E <: Item] extends HasUntil with HasTagName {
 	}
 	def elements(xpath:String)(implicit driver:WebDriver):Seq[E] = {
 		import scala.collection.JavaConversions.asScalaBuffer
+		driver.findElements(By.xpath(xpath)).map(e => apply(e))
+	}
+		def elements(xpath:String,wait:WebDriverWait)(implicit driver:WebDriver):Seq[E] = {
+		import scala.collection.JavaConversions.asScalaBuffer
+		until(wait,By.xpath(xpath))
 		driver.findElements(By.xpath(xpath)).map(e => apply(e))
 	}
 }
