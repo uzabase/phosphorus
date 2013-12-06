@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver
 import org.openqa.selenium.chrome.ChromeOptions
 import org.openqa.selenium.remote.DesiredCapabilities
 import org.openqa.selenium.remote.RemoteWebDriver
+import java.net.URL
 
 class DriverFactory {
 	def create:WebDriver = {
@@ -16,11 +17,8 @@ class DriverFactory {
 				options.addArguments("--lang="+Config().lang);
 			return new ChromeDriver(options)
 		}
-		val capabilities = new DesiredCapabilities();
-		capabilities.setJavascriptEnabled(true);
-		val firefoxDriver = new FirefoxDriver(capabilities)
-		firefoxDriver.asInstanceOf[RemoteWebDriver].getCapabilities()
-		return firefoxDriver
+		val capability = DesiredCapabilities.firefox();
+		new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capability);
 	}
 }
 object DriverFactory {
