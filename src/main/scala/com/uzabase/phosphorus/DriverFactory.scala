@@ -14,11 +14,20 @@ class DriverFactory {
 			System.setProperty("webdriver.chrome.driver", Config().chromeDriverUrl)
 			val options = new ChromeOptions
 			if(Config().isLang)
-				options.addArguments("--lang="+Config().lang);
+				options.addArguments("--lang="+Config().lang)
+			if(Config().isRemote) {
+				val capability = DesiredCapabilities.chrome()
+				capability.setCapability(ChromeOptions.CAPABILITY, capability)
+				new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capability)
+			}
 			return new ChromeDriver(options)
 		}
-		val capability = DesiredCapabilities.firefox();
-		new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capability);
+		if(Config().isRemote) {
+			val capability = DesiredCapabilities.firefox();
+			new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capability);
+		}else {
+			new FirefoxDriver
+		}
 	}
 }
 object DriverFactory {

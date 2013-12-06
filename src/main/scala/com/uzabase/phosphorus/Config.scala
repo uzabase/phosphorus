@@ -8,11 +8,18 @@ class Config(val properties: Properties) {
 	def lang = properties.getProperty("browser.lang")
 	def isChrome = chromeDriverUrl != null && !chromeDriverUrl.isEmpty
 	def isLang = lang != null && !lang.isEmpty
+	def isRemote = {
+		val remote = properties.getProperty("remote")
+		if (remote == null || remote.isEmpty() || remote.toLowerCase() == "false")
+			false
+		else
+			true
+	}
 }
 
 object Config {
 	def apply() = {
-		val fileName = if(getProperty != null) getProperty else "uat.properties"
+		val fileName = if (getProperty != null) getProperty else "uat.properties"
 		val properties = new Properties
 		properties.load(Thread.currentThread.getContextClassLoader.getResourceAsStream(fileName))
 		new Config(properties)
