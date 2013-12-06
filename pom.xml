@@ -18,7 +18,7 @@
 	<properties>
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
-		<selenium.version>2.37.1</selenium.version>
+		<selenium.version>2.38.0</selenium.version>
 		<encoding>UTF-8</encoding>
 		<scala.tools.version>2.10</scala.tools.version>
 		<scala.version>2.10.3</scala.version>
