@@ -13,7 +13,10 @@ abstract class SeleniumSpecification extends Specification with CoreMatchers wit
 
 	implicit val driver = DriverFactory().create
 
-	def setUp = driver.get(Config().applicationUrl);
+	def setUp = {
+		driver.manage().window().maximize()
+		driver.get(Config().applicationUrl);
+	}
 
 	def cleanUp = driver.quit
 
