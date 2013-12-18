@@ -6,6 +6,7 @@ class Config(val properties: Properties) {
   def applicationUrl = properties.getProperty("application.url")
   def chromeDriverUrl = properties.getProperty("chrome.driver.url")
   def chromeBinary = properties.getProperty("chrome.binary")
+  def ieDriverUrl = properties.getProperty("ie.driver.url")
   def lang = properties.getProperty("browser.lang")
   def isChrome = chromeDriverUrl != null && !chromeDriverUrl.isEmpty
   def isLang = lang != null && !lang.isEmpty

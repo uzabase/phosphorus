@@ -18,5 +18,8 @@ class ConfigSpec extends UnitSpecification {
     "Selenium Gridを使用はremoteがプロパティーファイルのキーとなる" in {
       Config().isRemote must beTrue
     }
+    "Internet ExprolerのDriverはie.driver.urlがプロパティーファイルのキーとなる" in {
+      Config().ieDriverUrl must beEqualTo("c:\\hoge\\ie")
+    }
   }
 }
