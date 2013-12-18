@@ -17,8 +17,10 @@ class DriverFactory {
 				options.addArguments("--lang="+Config().lang)
 			if(Config().isRemote) {
 				val capability = DesiredCapabilities.chrome()
-				capability.setCapability(ChromeOptions.CAPABILITY, capability)
-				new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capability)
+				capability.setCapability(ChromeOptions.CAPABILITY, options)
+				capability.setCapability("webdriver.chrome.driver", Config().chromeDriverUrl)
+				capability.setCapability("chrome.binary", Config().chromeBinary)
+				return new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capability);
 			}
 			return new ChromeDriver(options)
 		}
