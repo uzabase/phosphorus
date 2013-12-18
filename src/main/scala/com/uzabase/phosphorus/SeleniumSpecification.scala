@@ -7,6 +7,7 @@ import org.junit.runner.RunWith
 import org.specs2.runner.JUnitRunner
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.support.ui.WebDriverWait
+import java.util.concurrent.TimeUnit
 
 @RunWith(classOf[JUnitRunner])
 abstract class SeleniumSpecification extends Specification with CoreMatchers with HasDriverWait{
@@ -16,6 +17,7 @@ abstract class SeleniumSpecification extends Specification with CoreMatchers wit
 	def setUp = {
 		driver.manage().window().maximize()
 		driver.get(Config().applicationUrl);
+		driver.manage.timeouts.implicitlyWait(2, TimeUnit.SECONDS);
 	}
 
 	def cleanUp = driver.quit
