@@ -9,6 +9,7 @@ class Config(val properties: Properties) {
   def ieDriverUrl = properties.getProperty("ie.driver.url")
   def lang = properties.getProperty("browser.lang")
   def isChrome = chromeDriverUrl != null && !chromeDriverUrl.isEmpty
+  def isIE = ieDriverUrl != null && !ieDriverUrl.isEmpty
   def isLang = lang != null && !lang.isEmpty
   def isRemote = {
     val remote = properties.getProperty("remote")
