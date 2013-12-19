@@ -20,8 +20,11 @@ class DriverFactory {
 				return new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), chromeCapabilities(options));
 			return new ChromeDriver(options)
 		} else if (Config().isIE) {
+			val cap = new DesiredCapabilities();
+			cap.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
 			System.setProperty("webdriver.ie.driver", Config().ieDriverUrl);
-			return new InternetExplorerDriver
+			cap.setJavascriptEnabled(true)
+			return new InternetExplorerDriver(cap)
 		} else {
 			if (Config().isRemote) {
 				val capability = DesiredCapabilities.firefox();
