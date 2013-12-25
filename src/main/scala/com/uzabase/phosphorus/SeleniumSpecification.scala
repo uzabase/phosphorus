@@ -11,8 +11,8 @@ import java.util.concurrent.TimeUnit
 
 @RunWith(classOf[JUnitRunner])
 abstract class SeleniumSpecification extends Specification with CoreMatchers with HasDriverWait{
-
-	implicit val driver = DriverFactory().create
+	
+	implicit lazy val driver = DriverFactory().create
 
 	def setUp = {
 		driver.manage().window().maximize()
