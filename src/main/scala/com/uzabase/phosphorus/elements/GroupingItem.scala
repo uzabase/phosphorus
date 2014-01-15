@@ -63,4 +63,6 @@ case class Radio(webElement: WebElement,label:Item) extends ChoiceableItem
 case class Box(webElement: WebElement,label:Item) extends ChoiceableItem
 trait ChoiceableItem extends Item {
 	val label:Item
+	
+	def isChoiced = webElement.isSelected()
 }
