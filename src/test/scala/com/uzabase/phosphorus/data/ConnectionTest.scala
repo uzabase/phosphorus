@@ -13,7 +13,7 @@ import org.dbunit.dataset.ITable
 import scala.collection.immutable.List
 import org.dbunit.operation.DatabaseOperation
 import org.junit.Ignore
-
+@Ignore
 class ConnectionTest {
 
   @Mocked

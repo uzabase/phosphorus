@@ -18,7 +18,6 @@ import com.uzabase.phosphorus.data.JdbcProperties
 import com.uzabase.phosphorus.data.Connection
 import org.dbunit.dataset.ITable
 
-@RunWith(classOf[JUnitRunner])
 abstract class SeleniumSpecification2 extends Specification {
   
 	var cashed:Seq[ITable] = null
