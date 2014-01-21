@@ -21,9 +21,9 @@ trait Condition {
 			}
 		}
 	}
-	def present(xpath: String) = ExpectedConditions.presenceOfElementLocated(By.xpath(xpath))
+	def present(xpath: String)(implicit driver: WebDriver) = ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)).apply(driver)
 	
-	def selected(xpath: String) = ExpectedConditions.elementToBeSelected(By.xpath(xpath))
+	def selected(xpath: String)(implicit driver: WebDriver) = ExpectedConditions.elementToBeSelected(By.xpath(xpath)).apply(driver)
 	
-	def notSelected(xpath: String) = ExpectedConditions.elementSelectionStateToBe(By.xpath(xpath), false)
+	def notSelected(xpath: String)(implicit driver: WebDriver) = ExpectedConditions.elementSelectionStateToBe(By.xpath(xpath), false).apply(driver)
 }
