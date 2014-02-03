@@ -79,14 +79,13 @@ object H1 extends ElementCompanyon[H1] {
 	override def tagName = "h1"
 }
 
-case class TextArea(webElement:WebElement) extends Item
-object TextArea extends ElementCompanyon[TextArea] {
-	override def tagName = "textarea"
-}
-
 case class Dt(webElement:WebElement) extends Item
 object Dt extends ElementCompanyon[Dt] {
 	override def tagName = "dt"
+}
+case class Dd(webElement:WebElement) extends Item
+object Dd extends ElementCompanyon[Dd] {
+	override def tagName = "dd"
 }
 
 case class Label(webElement:WebElement) extends Item

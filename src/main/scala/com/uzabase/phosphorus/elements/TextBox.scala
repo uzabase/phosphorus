@@ -4,13 +4,7 @@ import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.ui.WebDriverWait
 
-class TextBox(val webElement:WebElement) extends Item with HasValue{
-	def appending(text:String) = webElement.sendKeys(text)
-	def input(text:String){
-		webElement.clear()
-		webElement.sendKeys(text)
-	}
-}
+class TextBox(val webElement:WebElement) extends Item with HasValue with HasInput
 
 object TextBox extends HasUntil with InputXpath{
 	val typeName = "text"
@@ -19,6 +13,15 @@ object TextBox extends HasUntil with InputXpath{
 	def apply(by:Predicate,wait:WebDriverWait)(implicit driver:WebDriver):TextBox = {
 		until(wait, path(by))
 		apply(by)
+	}
+}
+
+trait HasInput {
+	val webElement:WebElement
+	def appending(text:String) = webElement.sendKeys(text)
+	def input(text:String){
+		webElement.clear()
+		webElement.sendKeys(text)
 	}
 }
 
@@ -31,4 +34,10 @@ object Password extends HasUntil with InputXpath{
 		until(wait, path(by))
 		apply(by)
 	}
+}
+
+
+case class TextArea(webElement:WebElement) extends Item with HasInput
+object TextArea extends ElementCompanyon[TextArea] {
+	override def tagName = "textarea"
 }
