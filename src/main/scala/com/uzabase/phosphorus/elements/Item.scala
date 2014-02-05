@@ -98,6 +98,12 @@ object Th extends ElementCompanyon[Th] {
 	override def tagName = "th"
 }
 
+case class Paragraph(webElement:WebElement) extends Item
+object Paragraph extends ElementCompanyon[Paragraph] {
+	override def tagName = "p"
+}
+
+
 trait ElementCompanyon[E <: Item] extends HasUntil with HasTagName {
 	def apply(element:WebElement):E
 	def apply(by:Predicate)(implicit driver:WebDriver):E = apply(driver.findElement(by.by(tagName)))
