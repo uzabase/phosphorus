@@ -11,7 +11,7 @@ import com.uzabase.phosphorus.elements.Element
 
 
 trait Condition {
-	def notPresent(xpath: String) = new ExpectedCondition[Boolean](){
+	def notPresent(xpath: String)(implicit driver: WebDriver) = new ExpectedCondition[Boolean](){
 		def apply(driver: WebDriver):Boolean = {
 			try {
 				driver.findElement(By.xpath(xpath))
@@ -20,7 +20,7 @@ trait Condition {
 				case e:NoSuchElementException => Boolean.TRUE 
 			}
 		}
-	}
+	}.apply(driver)
 	def present(xpath: String)(implicit driver: WebDriver) = ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)).apply(driver)
 	
 	def selected(xpath: String)(implicit driver: WebDriver) = ExpectedConditions.elementToBeSelected(By.xpath(xpath)).apply(driver)
