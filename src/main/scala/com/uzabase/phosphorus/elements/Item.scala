@@ -69,6 +69,11 @@ object Li extends ElementCompanyon[Li]  {
 	override def tagName = "li"
 }
 
+case class Em(webElement:WebElement) extends Item
+object Em extends ElementCompanyon[Em]  {
+	override def tagName = "em"
+}
+
 case class Button(webElement:WebElement) extends Item
 object Button extends ElementCompanyon[Button] {
 	override def tagName = "button"
