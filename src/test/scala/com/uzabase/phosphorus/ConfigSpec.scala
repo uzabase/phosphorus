@@ -24,5 +24,11 @@ class ConfigSpec extends UnitSpecification {
 		"IE Driverが設定されている" in {
 			Config().isIE must beTrue
 		}
+		"Profileが設定されている" in {
+			Config().isProfile must beTrue
+		}
+		"Profile名はprofile.nameがプロパティーファイルのキーとなる" in {
+			Config().profileName must beEqualTo("prop")
+		}
 	}
 }

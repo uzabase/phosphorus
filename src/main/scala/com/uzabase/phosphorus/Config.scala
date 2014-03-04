@@ -11,6 +11,8 @@ class Config(val properties: Properties) {
   def isChrome = chromeDriverUrl != null && !chromeDriverUrl.isEmpty
   def isIE = ieDriverUrl != null && !ieDriverUrl.isEmpty
   def isLang = lang != null && !lang.isEmpty
+  def isProfile = profileName != null && !profileName.isEmpty
+  def profileName = properties.getProperty("profile.name")
   def isRemote = {
     val remote = properties.getProperty("remote")
     if (remote == null || remote.isEmpty() || remote.toLowerCase() == "false")

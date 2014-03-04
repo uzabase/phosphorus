@@ -8,6 +8,7 @@ import org.openqa.selenium.remote.DesiredCapabilities
 import org.openqa.selenium.remote.RemoteWebDriver
 import java.net.URL
 import org.openqa.selenium.ie.InternetExplorerDriver
+import org.openqa.selenium.firefox.internal.ProfilesIni
 
 class DriverFactory {
 	def create: WebDriver = {
@@ -24,7 +25,14 @@ class DriverFactory {
 			return new InternetExplorerDriver
 		} else {
 			if (Config().isRemote) {
-				val capability = DesiredCapabilities.firefox();
+				val capability = DesiredCapabilities.firefox()
+				if(Config().isProfile) {
+				  val allProfiles = new ProfilesIni
+				  System.setProperty("webdriver.firefox.profile", Config().profileName)
+				  val profile = allProfiles.getProfile(Config().profileName)
+				  profile.setAcceptUntrustedCertificates(true)
+				  capability.setCapability(FirefoxDriver.PROFILE, profile)
+				}
 				new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capability);
 			} else {
 				new FirefoxDriver
