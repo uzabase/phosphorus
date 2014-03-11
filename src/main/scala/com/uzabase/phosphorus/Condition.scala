@@ -24,11 +24,11 @@ trait Condition {
 		}
 	}.apply(driver)
 	
-	def present(xpath: String)(implicit driver: WebDriver) = new WebDriverWait(driver, 30).until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)))
+	def present(xpath: String)(implicit driver: WebDriver) = ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)).apply(driver)
 	
-	def selected(xpath: String)(implicit driver: WebDriver) = new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeSelected(By.xpath(xpath)))
+	def selected(xpath: String)(implicit driver: WebDriver) = ExpectedConditions.elementToBeSelected(By.xpath(xpath)).apply(driver)
 	
-	def clickable(item: Item)(implicit driver: WebDriver) = new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(item.webElement))
+	def clickable(item: Item)(implicit driver: WebDriver) = ExpectedConditions.elementToBeClickable(item.webElement).apply(driver)
 	
 	def clickable(xpath: String)(implicit driver: WebDriver) = ExpectedConditions.elementToBeClickable(By.xpath(xpath)).apply(driver)
 	
