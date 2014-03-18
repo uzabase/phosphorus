@@ -18,7 +18,7 @@ trait GroupingItem[E <: ChoiceableItem] extends Displayable with HasFind{
 		}
 	}
 	
-	def choice(target:Int) = list(target)
+	def choice(target:Int) = list(target).click
 	
 	override def hashCode = {
 		val prime = 31
