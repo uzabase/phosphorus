@@ -24,7 +24,7 @@ trait Condition {
 		}
 	}.apply(driver)
 	
-	def present(xpath: String)(implicit driver: WebDriver) = ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)).apply(driver)
+	def present(xpath: String)(implicit driver: WebDriver) = ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)).apply(driver)
 	
 	def selected(xpath: String)(implicit driver: WebDriver) = ExpectedConditions.elementToBeSelected(By.xpath(xpath)).apply(driver)
 	
