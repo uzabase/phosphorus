@@ -25,20 +25,19 @@ class DriverFactory {
 			System.setProperty("webdriver.ie.driver", Config().ieDriverUrl);
 			return new InternetExplorerDriver
 		} else {
+			val profile = new FirefoxProfile
+			if (Config().isLang)
+			    profile.setPreference("intl.accept_languages", Config().lang)
 			if (Config().isRemote) {
 				val capability = DesiredCapabilities.firefox()
 				if(Config().isProfile) {
-//				  val allProfiles = new ProfilesIni
-//				  System.setProperty("webdriver.firefox.profile", Config().profileName)
-//				  val profile = allProfiles.getProfile(Config().profileName)
-				  val profile = new FirefoxProfile
 				  profile.setAcceptUntrustedCertificates(true)
 				  profile.setAssumeUntrustedCertificateIssuer(false)
-				  capability.setCapability(FirefoxDriver.PROFILE, profile)
 				}
+				capability.setCapability(FirefoxDriver.PROFILE, profile)
 				new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capability);
 			} else {
-				new FirefoxDriver
+				new FirefoxDriver(profile)
 			}
 		}
 	}
