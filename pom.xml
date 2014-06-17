@@ -22,6 +22,9 @@
 		<encoding>UTF-8</encoding>
 		<scala.tools.version>2.10</scala.tools.version>
 		<scala.version>2.10.3</scala.version>
+		<deploy.repository.id>local.id</deploy.repository.id>
+		<deploy.repository.name>Local Repository</deploy.repository.name>
+		<deploy.repository.url>dav:http://localhost/mvn</deploy.repository.url>
 	</properties>
 
 	<dependencies>
@@ -151,5 +154,18 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-webdav-jackrabbit</artifactId>
+			</extension>
+		</extensions>
 	</build>
+	<distributionManagement>
+		<repository>
+			<id>${deploy.repository.id}</id>
+			<name>${deploy.repository.name}</name>
+			<url>${deploy.repository.url}</url>
+		</repository>
+	</distributionManagement>
 </project>

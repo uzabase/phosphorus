@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait
 
 
 trait Condition {
-	def notPresent(xpath: String)(implicit driver: WebDriver) = new ExpectedCondition[Boolean](){
+	def notPresent(xpath: String)(implicit driver: WebDriver) = new WebDriverWait(driver,10).until(new ExpectedCondition[Boolean](){
 		def apply(driver: WebDriver):Boolean = {
 			try {
 				driver.findElement(By.xpath(xpath))
@@ -22,15 +22,16 @@ trait Condition {
 				case e:NoSuchElementException => Boolean.TRUE 
 			}
 		}
-	}.apply(driver)
+	})
 	
-	def present(xpath: String)(implicit driver: WebDriver) = ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)).apply(driver)
+	def present(xpath: String)(implicit driver: WebDriver) = new WebDriverWait(driver,10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)))
 	
-	def selected(xpath: String)(implicit driver: WebDriver) = ExpectedConditions.elementToBeSelected(By.xpath(xpath)).apply(driver)
+	def selected(xpath: String)(implicit driver: WebDriver) = new WebDriverWait(driver,10).until(ExpectedConditions.elementToBeSelected(By.xpath(xpath)))
 	
-	def clickable(item: Item)(implicit driver: WebDriver) = ExpectedConditions.elementToBeClickable(item.webElement).apply(driver)
+	def clickable(item: Item)(implicit driver: WebDriver) = new WebDriverWait(driver,10).until(ExpectedConditions.elementToBeClickable(item.webElement))
 	
-	def clickable(xpath: String)(implicit driver: WebDriver) = ExpectedConditions.elementToBeClickable(By.xpath(xpath)).apply(driver)
+	def clickable(xpath: String)(implicit driver: WebDriver) = new WebDriverWait(driver,10).until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)))
 	
-	def notSelected(xpath: String)(implicit driver: WebDriver) = ExpectedConditions.elementSelectionStateToBe(By.xpath(xpath), false).apply(driver)
+	def notSelected(xpath: String)(implicit driver: WebDriver) = new WebDriverWait(driver,10).until(ExpectedConditions.elementSelectionStateToBe(By.xpath(xpath), false))
+	
 }
