@@ -16,6 +16,7 @@ class DriverFactory {
 		if (Config().isChrome) {
 			System.setProperty("webdriver.chrome.driver", Config().chromeDriverUrl)
 			val options = new ChromeOptions
+			options.addArguments("--disable-logging")
 			if (Config().isLang)
 				options.addArguments("--lang=" + Config().lang)
 			if (Config().isRemote)
