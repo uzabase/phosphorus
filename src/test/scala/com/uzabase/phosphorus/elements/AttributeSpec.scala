@@ -10,7 +10,7 @@ class AttributeSpec extends UnitSpecification{
 			id("hoge").fullSyntax must beEqualTo("[contains(@id,'hoge')]")
 		}
 		"textのxpath構文" in {
-			text_("hoge").fullSyntax must beEqualTo("[text()='hoge']")
+			text_("hoge").fullSyntax must beEqualTo("""[text()="hoge"]""")
 		}
 		"nameのxpath構文" in {
 			name("hoge").fullSyntax must beEqualTo("[@name='hoge']")
