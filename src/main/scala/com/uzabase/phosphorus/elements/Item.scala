@@ -84,6 +84,11 @@ object H1 extends ElementCompanyon[H1] {
 	override def tagName = "h1"
 }
 
+case class H3(webElement:WebElement) extends Item
+object H3 extends ElementCompanyon[H3] {
+	override def tagName = "h3"
+}
+
 case class Dt(webElement:WebElement) extends Item
 object Dt extends ElementCompanyon[Dt] {
 	override def tagName = "dt"
