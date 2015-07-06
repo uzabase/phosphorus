@@ -18,6 +18,7 @@ class DriverFactory {
 			val options = new ChromeOptions
 			if (Config().isLang)
 				options.addArguments("--lang=" + Config().lang)
+        options.addArguments("--no-sandbox")
 			if (Config().isRemote)
 				return new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), chromeCapabilities(options));
 			return new ChromeDriver(options)
