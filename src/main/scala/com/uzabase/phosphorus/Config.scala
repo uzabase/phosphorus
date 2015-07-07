@@ -13,6 +13,10 @@ class Config(val properties: Properties) {
   def isLang = lang != null && !lang.isEmpty
   def isProfile = profileName != null && !profileName.isEmpty
   def profileName = properties.getProperty("profile.name")
+  def waitTime:Int = Option(properties.getProperty("wait.time")) match {
+    case Some(v) => v.toInt
+    case _ => 10
+  }
   def isRemote = {
     val remote = properties.getProperty("remote")
     if (remote == null || remote.isEmpty() || remote.toLowerCase() == "false")
