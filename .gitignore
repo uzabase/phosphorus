@@ -42,6 +42,8 @@ build.log
 
 *.log
 .cache
+.cache-main
+.cache-tests
 
 # sbt specific
 dist/*

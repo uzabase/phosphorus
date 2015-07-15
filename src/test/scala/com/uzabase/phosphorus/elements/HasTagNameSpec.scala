@@ -11,4 +11,4 @@ class HasTagNameSpec extends UnitSpecification{
 	}
 }
 
-case class Sample extends HasTagName
+case class Sample() extends HasTagName

@@ -16,12 +16,11 @@
 	</licenses>
 
 	<properties>
-		<maven.compiler.source>1.7</maven.compiler.source>
-		<maven.compiler.target>1.7</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 		<selenium.version>2.46.0</selenium.version>
 		<encoding>UTF-8</encoding>
-		<scala.tools.version>2.10</scala.tools.version>
-		<scala.version>2.10.3</scala.version>
+		<scala.version>2.11.7</scala.version>
 		<deploy.repository.id>local.id</deploy.repository.id>
 		<deploy.repository.name>Local Repository</deploy.repository.name>
 		<deploy.repository.url>dav:http://localhost/mvn</deploy.repository.url>
@@ -46,8 +45,18 @@
 		</dependency>
 		<dependency>
 			<groupId>org.specs2</groupId>
-			<artifactId>specs2_${scala.tools.version}</artifactId>
-			<version>2.4.1</version>
+			<artifactId>specs2-core_2.11</artifactId>
+			<version>3.6.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.specs2</groupId>
+			<artifactId>specs2-junit_2.11</artifactId>
+			<version>3.6.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.specs2</groupId>
+			<artifactId>specs2-mock_2.11</artifactId>
+			<version>3.6.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.mockito</groupId>
@@ -120,7 +129,7 @@
 				<!-- see http://davidb.github.com/scala-maven-plugin -->
 				<groupId>net.alchim31.maven</groupId>
 				<artifactId>scala-maven-plugin</artifactId>
-				<version>3.1.6</version>
+				<version>3.2.1</version>
 				<executions>
 					<execution>
 						<goals>
@@ -128,11 +137,7 @@
 							<goal>testCompile</goal>
 						</goals>
 						<configuration>
-							<args>
-								<arg>-make:transitive</arg>
-								<arg>-dependencyfile</arg>
-								<arg>${project.build.directory}/.scala_dependencies</arg>
-							</args>
+							<scalaVersion>2.11.7</scalaVersion>
 						</configuration>
 					</execution>
 				</executions>
@@ -161,11 +166,20 @@
 			</extension>
 		</extensions>
 	</build>
-	<distributionManagement>
+	<repositories>
 		<repository>
-			<id>${deploy.repository.id}</id>
-			<name>${deploy.repository.name}</name>
-			<url>${deploy.repository.url}</url>
+			<id>eclipse-staging</id>
+			<name>Eclipse.org Staging</name>
+			<url>https://repo.eclipse.org/content/repositories/eclipse-releases/</url>
 		</repository>
-	</distributionManagement>
+		<repository>
+			<id>scalaz</id>
+			<name>scalaz</name>
+			<url>http://dl.bintray.com/scalaz/releases/</url>
+		</repository>
+		<repository>
+			<id>javelindev-snapshots</id>
+			<url>http://javelindev.jp/repository/snapshots/</url>
+		</repository>
+	</repositories>
 </project>

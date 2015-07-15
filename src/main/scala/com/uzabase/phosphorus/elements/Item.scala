@@ -165,7 +165,7 @@ trait HasDragAndDrop extends HasWebElement{
 	def dragAndDrop(xOffset:Int,yOffset:Int)(implicit driver:WebDriver) = new Actions(driver).dragAndDropBy(webElement, xOffset, yOffset)
 }
 
-case class EmptyItem extends Item {
+case class EmptyItem() extends Item {
 	val webElement:WebElement = null
 	override def displayed = false
 	override def click{}

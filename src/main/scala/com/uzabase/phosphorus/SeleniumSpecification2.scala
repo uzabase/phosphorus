@@ -17,11 +17,12 @@ import scala.collection.immutable.List
 import com.uzabase.phosphorus.data.JdbcProperties
 import com.uzabase.phosphorus.data.Connection
 import org.dbunit.dataset.ITable
+import org.specs2.specification.core.Fragments
 
 abstract class SeleniumSpecification2 extends Specification {
-  
+
 	var cashed:Seq[ITable] = null
-	
+  
 	def setUp = {
 		val xls = new XlsDataSet(Thread.currentThread.getContextClassLoader.getResourceAsStream("Expected.xls"))
 		val conn = Connection(JdbcProperties())

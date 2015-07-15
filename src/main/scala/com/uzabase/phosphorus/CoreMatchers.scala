@@ -12,6 +12,7 @@ trait CoreMatchers {
 	def beDisplayed = new ElementMatcher((element:Displayable)=>element.displayed,s"element are displayed. ",s"element are not displayed. ")
 	def haveOption(options:String*) = new DropDownMatcher(options)
 	def notExist = new ExistMatcher
+  
 }
 
 class ExistMatcher extends Matcher[Item] {
