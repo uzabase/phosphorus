@@ -27,5 +27,11 @@ abstract class SeleniumSpecification extends Specification with CoreMatchers wit
     driver.manage.timeouts.implicitlyWait(2, TimeUnit.SECONDS);
   }
   
-  def afterAll() = driver.quit
+  def afterAll() = {
+    try {
+      driver.quit
+    }catch {
+      case t: Throwable => println(t)
+    }
+  }
 }
