@@ -116,8 +116,8 @@ object Paragraph extends ElementCompanyon[Paragraph] {
 
 trait ElementCompanyon[E <: Item] extends HasUntil with HasTagName {
 	def apply(element:WebElement):E
-	def apply(by:Predicate)(implicit driver:WebDriver):E = apply(driver.findElement(by.by(tagName)))
-	def apply(by:Predicate,wait:WebDriverWait)(implicit driver:WebDriver):E = {
+	def apply(by:HasBy)(implicit driver:WebDriver):E = apply(driver.findElement(by.by(tagName)))
+	def apply(by:HasBy,wait:WebDriverWait)(implicit driver:WebDriver):E = {
 		until(wait, by.by(tagName))
 		apply(by)
 	}
