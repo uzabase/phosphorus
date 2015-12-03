@@ -18,7 +18,7 @@
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<selenium.version>2.46.0</selenium.version>
+		<selenium.version>2.48.2</selenium.version>
 		<encoding>UTF-8</encoding>
 		<scala.version>2.11.7</scala.version>
 		<deploy.repository.id>local.id</deploy.repository.id>
@@ -163,6 +163,7 @@
 			<extension>
 				<groupId>org.apache.maven.wagon</groupId>
 				<artifactId>wagon-webdav-jackrabbit</artifactId>
+				<version>2.9</version>
 			</extension>
 		</extensions>
 	</build>
@@ -182,4 +183,13 @@
 			<url>http://javelindev.jp/repository/snapshots/</url>
 		</repository>
 	</repositories>
+
+	<distributionManagement>
+		<repository>
+			<uniqueVersion>false</uniqueVersion>
+			<id>${deploy.repository.id}</id>
+			<name>${deploy.repository.name}</name>
+			<url>${deploy.repository.url}</url>
+		</repository>
+	</distributionManagement>
 </project>
