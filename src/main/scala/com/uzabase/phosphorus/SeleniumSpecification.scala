@@ -24,7 +24,7 @@ abstract class SeleniumSpecification extends Specification with CoreMatchers wit
   def beforeAll() = {
     driver.manage().window().maximize()
     driver.get(Config().applicationUrl);
-    driver.manage.timeouts.implicitlyWait(2, TimeUnit.SECONDS);
+    driver.manage.timeouts.implicitlyWait(Config().waitTime, TimeUnit.SECONDS);
   }
   
   def afterAll() = {
