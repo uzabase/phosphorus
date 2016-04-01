@@ -38,6 +38,6 @@ object Password extends HasUntil with InputXpath{
 
 
 case class TextArea(webElement:WebElement) extends Item with HasInput
-object TextArea extends ElementCompanyon[TextArea] {
+object TextArea extends ElementCompanion[TextArea] {
 	override def tagName = "textarea"
 }

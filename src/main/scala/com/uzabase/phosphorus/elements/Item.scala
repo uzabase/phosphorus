@@ -30,7 +30,7 @@ trait Item extends Displayable with Selectable
 }
 
 case class Element(webElement:WebElement) extends Item
-object Element extends ElementCompanyon[Element]{
+object Element extends ElementCompanion[Element]{
 	def apply(xpath:String)(implicit driver:WebDriver):Element = apply(driver.findElement(By.xpath(xpath)))
 	def apply(xpath:String,wait:WebDriverWait)(implicit driver:WebDriver):Element = {
 		until(wait, By.xpath(xpath));
@@ -39,82 +39,82 @@ object Element extends ElementCompanyon[Element]{
 }
 
 case class Div(webElement:WebElement) extends Item
-object Div extends ElementCompanyon[Div]{
+object Div extends ElementCompanion[Div]{
 	override def tagName = "div"
 }
 
 case class Image(webElement:WebElement) extends Item
-object Image extends ElementCompanyon[Image]{
+object Image extends ElementCompanion[Image]{
 	override def tagName = "img"
 }
 
 case class Anchor(webElement:WebElement) extends Item
-object Anchor extends ElementCompanyon[Anchor] {
+object Anchor extends ElementCompanion[Anchor] {
 	override def tagName = "a"
 	def apply(text:String)(implicit driver: WebDriver):Anchor = apply(text_(text))
 }
 
 case class Span(webElement:WebElement) extends Item
-object Span extends ElementCompanyon[Span] {
+object Span extends ElementCompanion[Span] {
 	override def tagName = "span"
 }
 
 case class Ul(webElement:WebElement) extends Item
-object Ul extends ElementCompanyon[Ul]{
+object Ul extends ElementCompanion[Ul]{
 	override def tagName = "ul"
 }
 
 case class Li(webElement:WebElement) extends Item
-object Li extends ElementCompanyon[Li]  {
+object Li extends ElementCompanion[Li]  {
 	override def tagName = "li"
 }
 
 case class Em(webElement:WebElement) extends Item
-object Em extends ElementCompanyon[Em]  {
+object Em extends ElementCompanion[Em]  {
 	override def tagName = "em"
 }
 
 case class Button(webElement:WebElement) extends Item
-object Button extends ElementCompanyon[Button] {
+object Button extends ElementCompanion[Button] {
 	override def tagName = "button"
 }
 
 case class H1(webElement:WebElement) extends Item
-object H1 extends ElementCompanyon[H1] {
+object H1 extends ElementCompanion[H1] {
 	override def tagName = "h1"
 }
 
 case class H3(webElement:WebElement) extends Item
-object H3 extends ElementCompanyon[H3] {
+object H3 extends ElementCompanion[H3] {
 	override def tagName = "h3"
 }
 
 case class Dt(webElement:WebElement) extends Item
-object Dt extends ElementCompanyon[Dt] {
+object Dt extends ElementCompanion[Dt] {
 	override def tagName = "dt"
 }
 case class Dd(webElement:WebElement) extends Item
-object Dd extends ElementCompanyon[Dd] {
+object Dd extends ElementCompanion[Dd] {
 	override def tagName = "dd"
 }
 
 case class Label(webElement:WebElement) extends Item
-object Label extends ElementCompanyon[Label] {
+object Label extends ElementCompanion[Label] {
 	override def tagName = "label"
 }
 
 case class Th(webElement:WebElement) extends Item
-object Th extends ElementCompanyon[Th] {
+object Th extends ElementCompanion[Th] {
 	override def tagName = "th"
 }
 
 case class Paragraph(webElement:WebElement) extends Item
-object Paragraph extends ElementCompanyon[Paragraph] {
+object Paragraph extends ElementCompanion[Paragraph] {
 	override def tagName = "p"
 }
 
 
-trait ElementCompanyon[E <: Item] extends HasUntil with HasTagName {
+trait ElementCompanion[E <: Item] extends HasUntil with HasTagName {
 	def apply(element:WebElement):E
 	def apply(by:HasBy)(implicit driver:WebDriver):E = apply(driver.findElement(by.by(tagName)))
 	def apply(by:HasBy,wait:WebDriverWait)(implicit driver:WebDriver):E = {

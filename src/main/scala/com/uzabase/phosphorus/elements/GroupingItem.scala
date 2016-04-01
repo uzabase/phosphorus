@@ -12,7 +12,7 @@ trait GroupingItem[E <: ChoiceableItem] extends Displayable with HasFind{
 	def displayed = list.exists(r => r.displayed)
 	
 	def choice(target:String)(implicit driver:WebDriver){
-		list.find {r => r.label.text == target} match {
+		list.find {r => r.label.text.trim() == target} match {
 			case Some(v) => v.click
 			case None => Unit
 		}
