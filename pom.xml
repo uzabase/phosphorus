@@ -18,7 +18,7 @@
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<selenium.version>2.52.0</selenium.version>
+		<selenium.version>2.53.1</selenium.version>
 		<encoding>UTF-8</encoding>
 		<scala.version>2.11.7</scala.version>
 		<deploy.repository.id>local.id</deploy.repository.id>

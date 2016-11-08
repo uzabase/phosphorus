@@ -108,6 +108,11 @@ object Th extends ElementCompanion[Th] {
 	override def tagName = "th"
 }
 
+case class Td(webElement:WebElement) extends Item
+object Td extends ElementCompanion[Td] {
+	override def tagName = "td"
+}
+
 case class Paragraph(webElement:WebElement) extends Item
 object Paragraph extends ElementCompanion[Paragraph] {
 	override def tagName = "p"
