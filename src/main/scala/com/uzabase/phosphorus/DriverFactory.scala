@@ -35,6 +35,7 @@ class DriverFactory {
 				  profile.setAcceptUntrustedCertificates(true)
 				  profile.setAssumeUntrustedCertificateIssuer(false)
 				}
+        profile.setPreference("network.http.use-cache",false)
 				capability.setCapability(FirefoxDriver.PROFILE, profile)
 				new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capability);
 			} else {
